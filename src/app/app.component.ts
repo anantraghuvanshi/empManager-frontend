@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from './employee';
+import { Employee } from './Employee';
 import { EmployeeService } from './employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
@@ -10,9 +10,9 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public employees: Employee[];
-  public editEmployee: Employee;
-  public deleteEmployee: Employee;
+  public employees!: Employee[];
+  public editEmployee!: Employee;
+  public deleteEmployee!: Employee;
 
   constructor(private employeeService: EmployeeService){}
 
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
 
   public onAddEmloyee(addForm: NgForm): void {
     document.getElementById('add-employee-form').click();
-    this.employeeService.addEmployee(addForm.value).subscribe(
+    this.employeeService.addEmployees(addForm.value).subscribe(
       (response: Employee) => {
         console.log(response);
         this.getEmployees();
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
   }
 
   public onUpdateEmloyee(employee: Employee): void {
-    this.employeeService.updateEmployee(employee).subscribe(
+    this.employeeService.updateEmployees(employee).subscribe(
       (response: Employee) => {
         console.log(response);
         this.getEmployees();
@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
   }
 
   public onDeleteEmloyee(employeeId: number): void {
-    this.employeeService.deleteEmployee(employeeId).subscribe(
+    this.employeeService.deleteEmployees(employeeId).subscribe(
       (response: void) => {
         console.log(response);
         this.getEmployees();
