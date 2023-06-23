@@ -10,9 +10,9 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public employees!: Employee[];
-  public editEmployee!: Employee;
-  public deleteEmployee!: Employee;
+  public employees: Employee[];
+  public editEmployee: Employee;
+  public deleteEmployee: Employee;
 
   constructor(private employeeService: EmployeeService){}
 
